@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: hello-deployment
+  labels:
+    name: hello-k8s-demo
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: hello-k8s-demo
+    spec:
+      containers:
+        - image: bigwhite/hello-kubernetes-demo:v0.1
+          name:  hello-k8s
+          imagePullPolicy: Always
+          ports:
+          - containersPort: 8080
